@@ -1,0 +1,36 @@
+const fs = require("fs");
+
+if (url === "/") {
+  res.write("<html>");
+  res.write("<head><title>Enter the Message</title></head>");
+  res.write(
+    '<body><Form action="/message" method="POST"><input type="text" name="message"><button type ="submit">submit</button></Form></body>'
+  );
+  res.write("</html>");
+  return res.end();
+}
+
+if (url === "/message" && method === "POST") {
+  const body = [];
+  req.on("data", (chunk) => {
+    console.log("chunk", chunk);
+    body.push(chunk);
+  });
+
+  return req.on("end", () => {
+    const parsedBody = Buffer.concat(body).toString();
+
+    const message = parsedBody.split("=")[1];
+    fs.writeFileSync("message.txt", message, (err) => {
+      res.statusCode = 302;
+      res.setHeader("Location", "/");
+      return res.end();
+    });
+  });
+}
+res.setHeader("Content-Type", "text/html");
+res.write("<html>");
+res.write("<head><title>shubham joshi</title></head>");
+res.write("<body><h1>Hello from shubham</h1></body>");
+res.write("</html>");
+res.end();
