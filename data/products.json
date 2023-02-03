@@ -1,1 +1,23 @@
-[{"title":"asdfasd"},{"title":"asdf"},{"title":"aaa"},{"title":"ssgdfg"}]
+[
+  {
+    "id": "123",
+    "title": "A Book",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/02/41/08/93/1000_F_241089302_4eVzhP0L9o2OY6gIPK3msrJEoo5ASdmM.jpg",
+    "description": "This is an awesome book!",
+    "price": "19"
+  },
+  {
+    "id": "561",
+    "title": "A pen",
+    "imageUrl": "https://img.freepik.com/free-photo/red-black-brush-stroke-banner-background-perfect-canva_1361-3597.jpg?w=1380&t=st=1675335916~exp=1675336516~hmac=9376b56e5e8a3ffffd94a7a13fe3d4356a7f47440c1c0614197c468a3ab28bdc",
+    "description": "This is an awesome book!",
+    "price": "19"
+  },
+  {
+    "title": "Shoes",
+    "imageUrl": "https://www.publicdomainpictures.net/pictures/80000/velka/leather-boot.jpg",
+    "description": "Best shoes",
+    "price": "55",
+    "id": "0.7701324668550296"
+  }
+]
