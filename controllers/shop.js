@@ -1,11 +1,12 @@
 const { redirect } = require("express/lib/response");
+const { where } = require("sequelize");
 const Product = require("../models/product");
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll()
-    .then(([rows, fieldData]) => {
+  Product.findAll()
+    .then((products) => {
       res.render("shop/product-list", {
-        prods: rows,
+        prods: products,
         pageTitle: "All Products",
         path: "/products",
       });
@@ -17,12 +18,12 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Product.findById(prodId)
-    .then(([product]) => {
-      console.log("product", product[0]);
+  Product.findByPk(prodId)
+    .then((products) => {
+      console.log("product", products);
       res.render("shop/product-detail", {
-        product: product[0],
-        pageTitle: product[0].title,
+        product: products,
+        pageTitle: products.title,
         path: "/products",
       });
     })
@@ -30,10 +31,10 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll()
-    .then(([rows, fieldData]) => {
+  Product.findAll()
+    .then((products) => {
       res.render("shop/index", {
-        prods: rows,
+        prods: products,
         pageTitle: "shop",
         path: "/",
       });
